@@ -80,8 +80,17 @@ nav.options > h3 {
 div.banner {
     display: flex;
     height: 400px;
-    background-image: url("../resources/images/banner.jpg");
+    background-image: url('../resources/images/banner.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
     align-items: end;
+}
+
+@media (max-width: 768px) {
+    div.banner {
+        height: 200px;
+    }
 }
 
 button.more-information {
@@ -155,9 +164,10 @@ div.movie-list div.poster-container{
     height: auto;
 }
 
-div.movie-list div.poster-container img{
+div.movie-list div.poster-container img {
+    height: 500px;
     width: 100%;
-    height: auto;
+    object-fit: cover;
 }
 
 div.movie-list div.poster-container button{
