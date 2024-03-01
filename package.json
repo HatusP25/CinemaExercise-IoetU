@@ -12,7 +12,10 @@
     "start": "npx http-server -c-1 ."
   },
   "jest": {
-    "transform": {}
+    "transform": {},
+    "setupFiles": [
+        "<rootDir>/test-setup.js"
+    ]
   },
   "author": "",
   "license": "ISC",
