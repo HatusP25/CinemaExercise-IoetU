@@ -15,7 +15,10 @@
     "transform": {},
     "setupFiles": [
         "<rootDir>/test-setup.js"
-    ]
+    ],
+     "moduleNameMapper": {
+      "^../javascript/(.*)$": "<rootDir>/javascript/$1"
+  }
   },
   "author": "",
   "license": "ISC",
