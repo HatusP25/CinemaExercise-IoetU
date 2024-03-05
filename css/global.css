@@ -202,3 +202,51 @@ footer div.apps > img {
     margin: 3% 10px
     
 }
+
+.movie-details-container {
+    display: flex;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 20px;
+}
+
+.movie-poster {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-poster img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    display: block;
+}
+
+.movie-information {
+    flex: 2;
+    padding: 20px;
+}
+
+.movie-information h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.movie-information p {
+    margin-bottom: 10px;
+}
+
+.movie-information .section-title {
+    font-weight: bold;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.dotted-line {
+    border-bottom: 1px dotted #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/global.css" />
+    <title>Document</title>
+    <script src="../javascript/get-movie.js"></script>
+    <script src="../javascript/constants.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="about-us">
+            <div class="social-media">
+                <img src="../resources/icons/facebook.png">
+                <img src="../resources/icons/twitter.png">
+                <img src="../resources/icons/instagram.png">
+            </div>
+            <div></div>
+            <div class="login">
+                <button class="sign-up">Sign Up</button>
+                <button class="log-in">Log in</button>
+            </div>
+        </nav>
+        <nav class="shop-options">
+            <img class="logo" src="../resources/images/cinemark_logo.png" />
+            <nav class="options">
+                <h3>Billboard</h3>
+                <h3>Theaters</h3>
+                <h3>Snackbar</h3>
+                <h3>Promotions</h3>
+            </nav>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <button class="more-information">More Information</button>
+    </div>
+
+    <div class="filter">
+        <div class="city-filter">
+            <h3>You are in:</h2>
+                <select required aria-placeholder="Value2">
+                    <option value="None" hidden>None</option>
+                    <option value="value2">Value 2</option>
+                    <option value="value3">Value 3</option>
+                </select>
+        </div>
+        <div class="local-filter">
+            <h3>Theaters:</h2>
+                <select required aria-placeholder="Value2">
+                    <option value="None" hidden>None</option>
+                    <option value="value2">Value 2</option>
+                    <option value="value3">Value 3</option>
+                </select>
+        </div>
+    </div>
+
+    <h1>One Hundred and One Dalmatians</h1>
+    <div class="movie-details">
+        <div class="movie-details-container">
+            <div class="movie-poster">
+            </div>
+            <div class="movie-information">
+                <div>
+                    <span class="section-title">Name</span>
+                    <p id="movie-name"></p>
+                    <div class="dotted-line"></div>
+                </div>
+                <div>
+                    <span class="section-title">Genres</span>
+                    <p id="movie-genres"></p>
+                    <div class="dotted-line"></div>
+                </div>
+                <div>
+                    <span class="section-title">Sinopsis</span>
+                    <p id="movie-synopsis"></p>
+                    
+                    <div class="dotted-line"></div>
+                </div>
+                <div>
+                    <span class="section-title">Duration</span>
+                    <p id="movie-duration"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="module">
+   import { get_movie } from '../javascript/get-movie.js';
+
+
+   function convertSecondsToHoursMinutes(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+
+        const formattedHours = hours.toString().padStart(2, '0');
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+
+        return `${formattedHours}:${formattedMinutes}`;
+    }
+
+
+    async function loadMovieDetails(movieId) {
+        const movieDetails = await get_movie(movieId);
+        if (movieDetails) {
+            document.getElementById('movie-name').textContent = movieDetails.titleText.text;
+            document.getElementById('movie-genres').textContent = movieDetails.genres.genres.map(genre=>genre.text).join(', ');
+            document.getElementById('movie-synopsis').textContent = movieDetails.plot.plotText.plainText;
+            document.getElementById('movie-duration').textContent = convertSecondsToHoursMinutes(movieDetails.runtime.seconds);
+            document.querySelector('.movie-poster').innerHTML = `<img src="${movieDetails.primaryImage.url}" alt="Poster for ${movieDetails.titleText.text}">`;
+        }
+    }
+
+    loadMovieDetails('tt0055254');
+
+</script>
+<footer>
+    <div class="about-us">
+        <h2>About</h2>
+        <h3>Who are we?</h3>
+        <h3>Terms and Conditions</h3>
+    </div>
+    <div class="contact-us">
+        <h2>Contact us</h2>
+        <h3>FAQs</h3>
+    </div>
+    <div class="maketing-empresarial">
+        <h2>Marketing</h2>
+        <h3>Services</h3>
+    </div>
+    <div class="downloads">
+        <h2>Download our App</h2>
+    </div>
+    <div class="apps">
+        <img src="../resources/icons/facebook-red.png" alt="">
+        <img src="../resources/icons/twitter-red.png" alt="">
+        <img src="../resources/icons/instagram-red.png" alt="">
+    </div>
+</footer>
+
+</html>

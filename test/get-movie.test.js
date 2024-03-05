@@ -3,7 +3,7 @@ import { get_movie } from '../javascript/get-movie.js';
 import { OPTIONS } from '../javascript/constants.js';
 
 jest.mock('../javascript/constants.js', () => ({
-  OPTIONS: { method: 'GET' }, // Simplified for testing, add headers if needed
+  OPTIONS: { method: 'GET' },
   API_MOVIE_ID_URL: 'https://moviesdatabase.p.rapidapi.com/titles/{id}?info=base_info'
 }));
 
